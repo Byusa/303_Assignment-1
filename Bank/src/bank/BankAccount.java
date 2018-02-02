@@ -1,6 +1,7 @@
 package bank;
 
 interface Transactions{
+	float rateOfInterest(); //added
 	public void deposit (double newAmount);
 	public Double withdraw (double newAmount);
 }
@@ -16,6 +17,7 @@ public class BankAccount implements Transactions{ //CheckingsAccount is the chil
 	 public BankAccount(){
       		balance = 0;
          }
+	public float rateOfInterest(){return 9.15f;}  //added
 
    	public BankAccount(double initialAmount){//constructor with input amount
       		amount = initialAmount;
