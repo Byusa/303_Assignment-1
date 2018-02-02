@@ -1,7 +1,10 @@
 package bank;
 
-
-public class BankAccount abstract CheckingsAccount{ //CheckingsAccount is the child of Customer(a customer owns a checkingsAccount)
+interface Transactions{
+	public void deposit (double newAmount);
+	public Double withdraw (double newAmount);
+}
+public class BankAccount implements Transactions{ //CheckingsAccount is the child of Customer(a customer owns a checkingsAccount)
 	private double amount;
 	CheckingsAccount chq = new CheckingsAccount(amount);
 	System.out.println("Customer's checking's account discount"+chq.discount);  
@@ -38,9 +41,11 @@ public class BankAccount abstract CheckingsAccount{ //CheckingsAccount is the ch
 	}
 	//public double get
 	private boolean isAmountValid(double amount){
+	//try{ amount}catch(ArithmeticException e){System.out.println(e);}  	
 		if(amount>= 0){
 			return true;
-		} 
+		}
+	
 			return false;
 	}
 	
