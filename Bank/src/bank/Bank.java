@@ -8,15 +8,22 @@ import java.io.*;
 /* Name of the class has to be "Main" only if the class is public. */
 public class Bank// class Bank
 {
+    
+ private String name = "";
+ private Double interestRate= 0.10;
+ private Double charge= 0.15;
+ 
+ String getName(String newName){
+     return newName=name.clone();
+ }
 	public static void main (String[] args) throws java.lang.Exception
 	{
             int i=0;//default
             double amount=0.0;
-            System.out.println("Click -1 if you don't want to creat more accounts");
+           
 	    Scanner sc=new Scanner(System.in);  
 	    //Arraylist<Customer> customers = new Arraylist<Customer>();
     long ID=0;
-    String Name ="";
     List<Customer> customerList = new ArrayList<Customer>();
     System.out.println("\n Welcome sir/Madam create an with RBC: ");	
     System.out.println("Click 0 to exit");
