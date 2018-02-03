@@ -1,6 +1,6 @@
-package bank;
+/*package bank;
 
-public class SavingsAccount extends Customer{
+public class SavingsAccount extends BankAccount{
 	private double balance;
         private double amount;
 	SavingsAccount svg = new SavingsAccount(amount);
@@ -24,5 +24,5 @@ public class SavingsAccount extends Customer{
 		return amount;
 	}
 }
-
+*/
  
