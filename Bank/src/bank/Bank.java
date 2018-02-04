@@ -8,8 +8,24 @@ import java.io.*;
 /* Name of the class has to be "Main" only if the class is public. */
 public class Bank// class Bank
 {
+      public  static void main(String[] args){
+          
+          Customer custm1 = new Customer();
+          
+          String NewName = "serge";
+          int newID=custm1.ID();
+          float Newdiscount=2;
+          
+          Customer custm = new Customer(NewName,newID,Newdiscount);
+          //String n = custm.toString();
+          System.out.println(custm.getCustomersName());
+          System.out.println(custm.getCustomersID());
+          System.out.println(custm.getdiscount());
+      }
+   
+}
     
- private String name = "";
+ /*private String name = "";
  private Double interestRate= 0.10;
  private Double charge= 0.15;
  
@@ -51,6 +67,6 @@ public class Bank// class Bank
             }
 	}
 	
-}
+}*/
 
 
