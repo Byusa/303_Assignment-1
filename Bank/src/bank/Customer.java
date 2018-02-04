@@ -11,48 +11,68 @@ Modifications
 package bank;
 import java.util.*;
 
-public class Customer extends Bank{
+public class Customer {//extends Bank
 	private String CustomersName;
-	private long CustomersID;
-	private double discount;
+	private int CustomersID;
+	private float discount;
         // A customer has a name, a unique customer number, and a discount percentage.
-   private long IDGenerator (){
-	   long leftLimit = 1L;
-    	   long rightLimit = 10L;
-           long generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
-	   return generatedLong;
-   }
-   private long getID(){
-	  long Id = IDGenerator();
-           HashSet<Long> store = new HashSet<Long>();
-           while(!store.contains(Id)){
-               Id = IDGenerator();
-           }
-           store.add(Id);
-	  return Id;
-  }
-   public String toString() {
-        return this.CustomersName + "," + this.CustomersID + "," + this.discount;
-    }
      public float CustomerDiscount(){return 0.15f;}  //interest rate
-        public void CustomerDiscounts(){        
+     public void printCustomerDiscounts(){        
             System.out.print(0.15);
         }  //interest rate
 
-   /*
-   public void Idi (){
-       System.out.print(getID);
+   public void  setdiscount(float discount){
+       this.discount = discount;
+      }
+   public float getdiscount (){
+       return discount;
+      }
+
+   public void  setCustomersID(int CustomersID){
+       this.CustomersID = CustomersID;
    }
-    public void name (){
-        
-       System.out.print(name);
-   }*/
-    public Customer(String NewName, long ID, float Newdiscount ){
+    public int getCustomersID (){
+       return CustomersID;
+    }
+    
+    public void setCustomersName (String CustomersName){
+       this.CustomersName = CustomersName;
+   }
+     public String  getCustomersName(){
+       return CustomersName;
+      }
+    
+    public Customer(String NewName, int ID, float Newdiscount ){
           CustomersName = NewName;
-          ID = getID();
+          //ID = ID();
           CustomersID = ID;
-          Newdiscount = CustomerDiscount();
+          //Newdiscount = CustomerDiscount();
           discount =Newdiscount;
+    }
+    public static int IDGenerator (){
+           int generated=(new Random().nextInt((9999999-1000000) + 1)  + 1000000);
+	   return generated;
+    }
+   public static int ID(){
+	  int Id = IDGenerator();
+           HashSet<Integer> store = new HashSet<Integer>();
+           while(store.contains(Id)){
+               Id = IDGenerator();
+           }
+           store.add(Id);
+           Id = Id;
+	  return Id;
+    }   
+      public String toString() {
+        return this.CustomersName + "," + this.CustomersID + "," + this.discount;
+    }
+      
+      public Customer(){
+          this.CustomersName = CustomersName;
+          //ID = ID();
+          this.CustomersID = CustomersID;
+          //Newdiscount = CustomerDiscount();
+          this.discount =discount;
     }
 	
 }
