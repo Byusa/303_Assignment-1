@@ -1,49 +1,37 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package bank;
 
+/**
+ *
+ * @author jabo.byusa
+ */
 
-public class CheckingsAccount extends Customer{ //CheckingsAccount is the child of Customer(a customer owns a checkingsAccount)
-	private double amount;
-	CheckingsAccount chq = new CheckingsAccount(amount);
-	System.out.println("Customer's checking's account discount"+chq.discount);  
+public class CheckingAccount extends BankAccount {
 	
-	public double getAmount(){
-	     return amount;
+	public CheckingAccount(double balance,int accountNum) {
+		super(balance,accountNum);
 	}
 	
-	private CheckingsAccount(double amount){ //constructor with input amount
-	}
-	//public double get
-	private boolean isAmountValid(double amount){
-		if(amount>= 0){
-			return true;
-		} 
-			return false;
-	}
-	public void depositToCheckings (double newAmount){//setter method=deposit
-		double amount2 = amount;
-		object.deposit(y);
-	}
-	Private double tax(double amount){
-		amount = amount*(0.15);
-		return amount;
-	}
-	public double withdraw(double newAmount){
-		double Taxedamount =tax(newAmount);
-		if((isAmountValid(newAmount)) &&(newAmount<amount)){
-			amount=amount-newAmount-Taxedamount;
-		}else{
-			System.out.println("Insufficient balance");
-		}
-		balance=amount;
-	    return balance;
+	public boolean deposit(double amountToDeposit) {
+		return super.deposit(amountToDeposit);
 	}
 	
-	private double transferFromCheqsToSavings(double amount){
-	    	return amount;
+	public boolean withdraw(double amountToWithdraw, double discountPercent) {
+		double withdrawalCharge = 1 - discountPercent;		//1 dollar is the default charge, subtract from 1 the discount user receives		
+		amountToWithdraw += withdrawalCharge; 				//add withdrawal charge to the total amount to be withdrawn
+		return super.withdraw(amountToWithdraw);					//call the withdraw method from superclass with new withdrawal value				
 	}
+	
+	public boolean transfer(double amountToTransfer, BankAccount secondAccount) {
+		return super.transfer(amountToTransfer, secondAccount);
+	}
+	
+	public String getType() {
+		return "checkings";
+	}
+	
 }
-//balance public //
-//tax called from withdraw
-
-
