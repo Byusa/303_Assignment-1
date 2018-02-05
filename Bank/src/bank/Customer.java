@@ -33,6 +33,7 @@ public class Customer {//extends Bank
     public int getCustomersID (){
        return CustomersID;
     }
+	
     
     public void setCustomersName (String CustomersName){
        this.CustomersName = CustomersName;
