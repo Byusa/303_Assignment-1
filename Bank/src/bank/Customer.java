@@ -77,4 +77,5 @@ public class Customer {//extends Bank
           this.discount =discount;
     }
 	
+	
 }
