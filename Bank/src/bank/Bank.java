@@ -14,7 +14,8 @@ public class Bank// class Bank
       
       public static void Transaction(){
           
-          Customer custm1 = new Customer();
+          Customer custm1;
+          BankAccount account1 = new BankAccount(); 
           float Newdiscount=2;
           Scanner sc=new Scanner(System.in);
           String name="";
@@ -37,8 +38,10 @@ public class Bank// class Bank
             case 1:
                 System.out.println("Deposit money then go on with other ather transations: ");
                 amount=sc.nextDouble();
-                BankAccount account = new BankAccount(amount);
-                System.out.println("Welcome "+ name+ " here is your account number "+ account.getNumber());
+                int accountNumber= account1.getaccountNumber();
+                BankAccount account = new BankAccount(amount,accountNumber);
+                //CheckingAccount checkingAccount = new CheckingAccount(amount,accountNumber);
+                System.out.println("Welcome "+ name+ " here is your account number "+ account.getaccountNumber());
                 System.out.println("You current balance is " + account.getBalance());
                     
                  while(exit!='E' || exit!='e'){
@@ -62,6 +65,7 @@ public class Bank// class Bank
                  }
                 System.out.println("You current balance on your Checkigs account is " + account.getBalance());
                 break;
+                
             case 2: System.out.println("");  break;
             default:
                 System.out.println("Invalid Input");
