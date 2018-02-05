@@ -9,20 +9,70 @@ import java.io.*;
 public class Bank// class Bank
 {
       public  static void main(String[] args){
+          Transaction();
+      }
+      
+      public static void Transaction(){
           
           Customer custm1 = new Customer();
-          
-          String NewName = "serge";
-          int newID=custm1.ID();
           float Newdiscount=2;
-          
-          Customer custm = new Customer(NewName,newID,Newdiscount);
-          //String n = custm.toString();
-          System.out.println(custm.getCustomersName());
-          System.out.println(custm.getCustomersID());
-          System.out.println(custm.getdiscount());
+          Scanner sc=new Scanner(System.in);
+          String name="";
+          char exit='e';
+              //Scanner in = new Scanner(System.in);
+          while(exit!='E' || exit!='e'){
+            System.out.println("Welcome to RBC, Enter your name to register as a customer");  
+            name=sc.next();
+            Customer custm = new Customer(name,custm1.ID(),custm1.CustomerDiscount());
+            System.out.println("here is your account info: "+custm.toString());
+            System.out.println("Click 1 to create Checkings account: ");
+            System.out.println("Click 2 to create Deposit account");
+            
+            
+        int accoutOPtion=sc.nextInt();
+        if(accoutOPtion==1){  
+        double amount=0,withDraw, Deposit;
+        int option=1; //option 2 by default  
+    	switch(option){
+            case 1:
+                System.out.println("Deposit money then go on with other ather transations: ");
+                amount=sc.nextDouble();
+                BankAccount account = new BankAccount(amount);
+                System.out.println("Welcome "+ name+ " here is your account number "+ account.getNumber());
+                System.out.println("You current balance is " + account.getBalance());
+                    
+                 while(exit!='E' || exit!='e'){
+                    System.out.println("Click 1 to Depoosit: ");
+                    System.out.println("Click 2 to withdraw");
+                    int transction = 1;
+                    transction=sc.nextInt();
+                    if(transction==1){
+                        System.out.println("How much do you want to Deposit?");
+                        Deposit=sc.nextDouble();
+                        account.deposit(Deposit);
+                        System.out.println("You current balance is " + account.getBalance());
+                    }else if(transction ==2){
+                        System.out.println("How much do you want to withdraw?");
+                        withDraw=sc.nextDouble();
+                        account.withdraw(withDraw);
+                        System.out.println("You current balance is " + account.getBalance());
+                    }else{
+                        System.out.println("You current balance is " + account.getBalance());
+                    }
+                 }
+                System.out.println("You current balance on your Checkigs account is " + account.getBalance());
+                break;
+            case 2: System.out.println("");  break;
+            default:
+                System.out.println("Invalid Input");
+          }
+      }else if(accoutOPtion==2){
+          String st= "checkings";
+      }else{
+          System.out.println("INVALID CHOISE");
       }
-   
+}
+      }
 }
     
  /*private String name = "";
