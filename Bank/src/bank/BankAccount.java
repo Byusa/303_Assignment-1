@@ -18,11 +18,18 @@ class BankAccount { //CheckingsAccount is the child of Customer(a customer owns 
         lastAccountNumber = accountNumber;
     }
     public void deposit(double depositAmount){
-        balance += depositAmount;
+        if(depositAmount<0){
+            System.out.println("Invalid Input, there is no negative money talk to our loan system!!!");
+        }else{
+          balance += depositAmount;
+        }
     }
     public boolean withdraw(double withdrawAmount){
         if (withdrawAmount > balance){    
             System.out.println("Sorry, Insufficient Funds!!!");
+            return false;
+        }else if(withdrawAmount<0){
+            System.out.println("Invalid Input, there is no negative money talk to our loan system!!!");
             return false;
         } else {
             balance -= withdrawAmount;
