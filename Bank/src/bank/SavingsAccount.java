@@ -1,28 +1,47 @@
-/*package bank;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package bank;
 
 public class SavingsAccount extends BankAccount{
-	private double balance;
-        private double amount;
-	SavingsAccount svg = new SavingsAccount(amount);
-	//System.out.println("Customer's saving's account discount"+svg.discount);
 	
-        private SavingsAccount(double amount){ //constructor with input amount
-            
+	public SavingsAccount(double balance, int accountNum) {
+		super(balance,accountNum);
 	}
 	
-	public void deposit (double amount){
-		if(isAmountValid(amount)){
-			if(discount==0){
-				amount = amount + 1;
-			}else{
-				double amount2 = amount*discount;
-				amount = amount2 + amount;
-			}
-		}
+	
+	
+	public boolean deposit(double amountToDeposit, float discountPercent) {
+		if(discountPercent<0 || discountPercent>100) 		//verify that a valid discountPercent has been entered. If not return false.
+			return false;
+		
+		double depositBonus = 1 + (discountPercent/100);		//calculate deposit bonus by adding to 1 dollar bonus the amount the customer earns via discount percentage
+		amountToDeposit += depositBonus;						
+		return super.deposit(amountToDeposit+depositBonus);		//call the deposit method from superclass
 	}
-	public double withdraw (double amount){
-		return amount;
+	
+	
+	
+	public boolean withdraw(double amountToWithdraw, float discountPercent) {
+		if(amountToWithdraw<1000)				//amount has to be greater than 1000, otherwise user cannot withdraw and return false
+			return false;
+		
+		return super.withdraw(amountToWithdraw);
 	}
+	
+	
+	
+	public boolean transfer(double amountToTransfer, BankAccount secondAccount) {
+		return super.transfer(amountToTransfer, secondAccount);
+	}
+	
+	
+	
+	public String getType() {
+		return "savings";
+	}
+	
+
 }
-*/
- 
